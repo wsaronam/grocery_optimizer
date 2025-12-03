@@ -1,0 +1,27 @@
+{
+    "milk": {
+        "walmart": 2.99,
+        "target": 3.29,
+        "ralphs": 3.49
+    },
+    "eggs": {
+        "walmart": 1.79,
+        "target": 2.29,
+        "ralphs": 2.19
+    },
+    "chicken": {
+        "walmart": 7.99,
+        "target": 8.29,
+        "ralphs": 7.49
+    },
+    "rice": {
+        "walmart": 1.50,
+        "target": 1.69,
+        "ralphs": 1.79
+    },
+    "banana": {
+        "walmart": 0.59,
+        "target": 0.65,
+        "ralphs": 0.62
+    }
+}

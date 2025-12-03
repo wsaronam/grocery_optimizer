@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const productsRoute = require("./routes/products.js");
 
 
 const app = express();
@@ -13,6 +14,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
     res.json({ message: "Backend running!" });
 });
+
+// api call to get product data
+app.use("/api/products", productsRoute);
 
 
 // Starts server
