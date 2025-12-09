@@ -3,6 +3,8 @@ import './App.css';
 
 import { useState } from "react";
 
+import ProductCard from "./components/ProductCard";
+
 
 
 
@@ -32,10 +34,7 @@ function App() {
         <button onClick={handleSearch}>Search</button>
         <ul>
           {results.map(p => (
-            <li>
-              {p.name} - {p.brand}
-              <img src={p.image} alt="" width={50} />
-            </li>
+            <ProductCard product={p} />
           ))}
         </ul>
       </header>
