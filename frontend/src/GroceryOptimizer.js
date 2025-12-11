@@ -37,15 +37,17 @@ export default function GroceryOptimizer() {
 
     return (
         <div>
-            <h1>Grocery Optimizer</h1>
-            <div className="product-card">
+            <div className="search-container">
+                <h1 className="title">Grocery Optimizer</h1>
                 <input
+                    className="search-bar"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Search for grocery items..."
                 />
-                <button onClick={handleSearch}>Search</button>
-
+                <button className="search-button" onClick={handleSearch}>Search</button>
+            </div>
+            <div className="product-card">
                 {loading && <p>Loading...</p>}
 
                 {error && <p>{error}</p>}
