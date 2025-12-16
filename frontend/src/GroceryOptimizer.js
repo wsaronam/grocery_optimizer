@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-import ProductCard from "./components/ProductCard.js";
+import ProductList from "./components/ProductList.js";
 import SideBar from "./components/SideBar.js";
+import "./GroceryOptimizer.css";
 
 
 
 
-export default function GroceryOptimizer() {
+export default function GroceryOptimizer({ onAdd }) {
 
     const [groceryList, setGroceryList] = useState([]);
     const [query, setQuery] = useState("");
@@ -52,22 +53,18 @@ export default function GroceryOptimizer() {
                     />
                     <button className="search-button" onClick={handleSearch}>Search</button>
                 </div>
-                <div className="product-card">
+                <div>
                     {loading && <p>Loading...</p>}
 
                     {error && <p>{error}</p>}
 
                     {!loading && !error && 
-                        <ul>
-                            {results.map(p => (
-                                <ProductCard product={p}/>
-                            ))}
-                        </ul>
+                        <ProductList items={results} onAdd={onAdd} />
                     }
                 </div>
             </div>
             <div>
-                <SideBar items={groceryList} />
+                {/* <SideBar items={groceryList} /> */}
             </div>
         </div>
     )

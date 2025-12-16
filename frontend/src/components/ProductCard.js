@@ -14,7 +14,7 @@ export default function ProductCard({ product, onAdd }) {
             <div className="product-card-info">
                 <h2 className="product-card-name">{product.name}</h2>
                 <p className="product-card-brand">{product.brand}</p>
-                <button onClick={() => onAdd(product)}>Add</button>
+                <button className="add-btn" onClick={() => onAdd(product)}>Add</button>
             </div>
             
         </div>
