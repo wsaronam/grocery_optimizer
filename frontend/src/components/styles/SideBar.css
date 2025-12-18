@@ -1,0 +1,30 @@
+.sidebar {
+    height: 100%;
+    padding: 20px;
+    background: #2e002a;
+    overflow-y: auto;
+}
+
+.sidebar-title {
+    margin-top: 0;
+    font-size: 1.4rem;
+}
+
+.empty-message {
+    color: #666;
+    margin-top: 20px;
+}
+
+.sidebar-main-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.sidebar-list-item {
+    padding: 8px 10px;
+    background: rgb(145, 0, 113);
+    border-radius: 6px;
+    margin-bottom: 8px;
+    border: 1px solid #ddd;
+}

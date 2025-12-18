@@ -41,7 +41,7 @@ export default function GroceryOptimizer({ onAdd }) {
 
 
     return (
-        <div>
+        <div style={{display: "flex"}}>
             <div>
                 <div className="search-container">
                     <h1 className="title">Grocery Optimizer</h1>
@@ -58,13 +58,13 @@ export default function GroceryOptimizer({ onAdd }) {
 
                     {error && <p>{error}</p>}
 
-                    {!loading && !error && 
-                        <ProductList items={results} onAdd={onAdd} />
+                    {!loading && !error && results.length > 0 &&
+                        <ProductList items={results} onAdd={addToList} />
                     }
                 </div>
             </div>
             <div>
-                {/* <SideBar items={groceryList} /> */}
+                <SideBar items={groceryList} />
             </div>
         </div>
     )

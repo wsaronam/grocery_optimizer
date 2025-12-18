@@ -1,13 +1,18 @@
+import "./styles/SideBar.css";
+
+
+
+
 export default function SideBar({items}) {
     return (
-        <div>
-            <h1>Your Grocery List</h1>
+        <div className="sidebar">
+            <h1 className="sidebar-title">Your Grocery List</h1>
 
-            {items.length === 0 && (<p>Grocery list is empty.</p>)}
+            {items.length === 0 && (<p className="empty-message">Grocery list is empty.</p>)}
 
-            <ul>
+            <ul className="sidebar-main-list">
                 {items.map((item, i) => (
-                    <li key={i}>
+                    <li key={i} className="sidebar-list-item">
                         {item.name}
                     </li>
                 ))}
