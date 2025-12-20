@@ -20,4 +20,16 @@ router.get("/search", async (req, res) => {
 });
 
 
+router.get("/:barcode", async (req, res) => {
+    try {
+        const product = await getProductByBarcode(req.params.barcode);
+        if (!product) return res.status(404).json({error: "Not found"});
+        res.json(product);
+    } 
+    catch {
+        res.status(500).json({error: "Failed to fetch product"});
+    }
+});
+
+
 module.exports = router;

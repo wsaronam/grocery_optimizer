@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import ProductList from "./components/ProductList.js";
 import SideBar from "./components/SideBar.js";
@@ -14,6 +14,18 @@ export default function GroceryOptimizer({ onAdd }) {
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+
+
+    useEffect(() => {
+        const savedList = localStorage.getItem("groceryList");
+        if (savedList) {
+            setGroceryList(JSON.parse(savedList));
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("groceryList", JSON.stringify(groceryList));
+    }, [groceryList]);
 
 
     async function handleSearch() {
@@ -35,8 +47,21 @@ export default function GroceryOptimizer({ onAdd }) {
         }
     }
 
-    function addToList(item) {
-        setGroceryList(prev => [...prev, item]);
+    function addToList(product) {
+        setGroceryList(prev => {
+            const existing = prev.find(item => item.product.barcode === product.barcode);
+
+            if (existing) {
+                return prev.map(item =>
+                    item.product.barcode === product.barcode
+                    ? {...item, quantity: item.quantity + 1}
+                    : item
+                );
+            }
+            else {
+                return [...prev, {product, quantity: 1}];
+            }
+        });
     }
 
 

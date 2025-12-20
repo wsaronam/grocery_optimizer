@@ -8,7 +8,7 @@ export default function ProductList({ items, onAdd }) {
     return (
         <div className="product-list-container">
             {items.map(item => (
-                <ProductCard product={item} onAdd={onAdd} />
+                <ProductCard key={item.barcode} product={item} onAdd={onAdd} />
             ))}
         </div>
     )
