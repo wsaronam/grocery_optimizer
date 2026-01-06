@@ -16,6 +16,34 @@ export default function GroceryOptimizer({ onAdd }) {
     const [error, setError] = useState(null);
 
 
+    function incrementItem(barcode) {
+        setGroceryList(prev =>
+            prev.map(item =>
+                item.product.barcode === barcode
+                ? {...item, quantity: item.quantity + 1}
+                : item
+            )
+        );
+    }
+
+    function decrementItem(barcode) {
+        setGroceryList(prev =>
+            prev.map(item =>
+                item.product.barcode === barcode
+                ? {...item, quantity: item.quantity - 1}
+                : item
+            )
+            .filter(item => item.quantity > 0)
+        );
+    }
+
+    function removeItem(barcode) {
+        setGroceryList(prev => 
+            prev.filter(item => item.product.barcode !== barcode)
+        );
+    }
+
+
     useEffect(() => {
         const savedList = localStorage.getItem("groceryList");
         if (savedList) {
@@ -49,6 +77,7 @@ export default function GroceryOptimizer({ onAdd }) {
 
     function addToList(product) {
         setGroceryList(prev => {
+            console.log(product.barcode);
             const existing = prev.find(item => item.product.barcode === product.barcode);
 
             if (existing) {
@@ -59,6 +88,7 @@ export default function GroceryOptimizer({ onAdd }) {
                 );
             }
             else {
+                console.log(groceryList);
                 return [...prev, {product, quantity: 1}];
             }
         });
@@ -89,7 +119,12 @@ export default function GroceryOptimizer({ onAdd }) {
                 </div>
             </div>
             <div>
-                <SideBar items={groceryList} />
+                <SideBar 
+                    items={groceryList}
+                    onIncrement={incrementItem}
+                    onDecrement={decrementItem}
+                    onRemove={removeItem} 
+                />
             </div>
         </div>
     )

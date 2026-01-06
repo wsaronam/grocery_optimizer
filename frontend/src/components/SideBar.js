@@ -3,20 +3,7 @@ import "./styles/SideBar.css";
 
 
 
-export default function SideBar({items}) {
-
-    function incrementItem(barcode) {
-
-    }
-
-    function decrementItem(barcode) {
-
-    }
-
-    function removeItem(barcode) {
-
-    }
-
+export default function SideBar({items, onIncrement, onDecrement, onRemove}) {
 
     return (
         <div className="sidebar">
@@ -31,9 +18,9 @@ export default function SideBar({items}) {
                             {product.name}
                             {quantity}
                             <div>
-                                <button onClick={() => incrementItem(product.barcode)}>+</button>
-                                <button onClick={() => decrementItem(product.barcode)}>-</button>
-                                <button onClick={() => removeItem(product.barcode)}>Remove</button>
+                                <button onClick={() => onIncrement(product.barcode)}>+</button>
+                                <button onClick={() => onDecrement(product.barcode)}>-</button>
+                                <button onClick={() => onRemove(product.barcode)}>Remove</button>
                             </div>
                         </li>
                     </div>
