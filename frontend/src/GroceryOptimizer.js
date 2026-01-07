@@ -88,7 +88,6 @@ export default function GroceryOptimizer({ onAdd }) {
                 );
             }
             else {
-                console.log(groceryList);
                 return [...prev, {product, quantity: 1}];
             }
         });

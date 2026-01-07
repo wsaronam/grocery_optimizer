@@ -6,6 +6,9 @@ import "./styles/SideBar.css";
 export default function SideBar({items, onIncrement, onDecrement, onRemove}) {
 
     console.log(items);
+    items.map((product, quantity) => {
+        console.log(product.product);
+    });
 
     return (
         <div className="sidebar">
@@ -17,12 +20,12 @@ export default function SideBar({items, onIncrement, onDecrement, onRemove}) {
                 {items.map((product, quantity) => (
                     <div>
                         <li key={product.barcode} className="sidebar-list-item">
-                            <h1 className="test">{product.name}</h1>
-                            {/* {quantity} */}
+                            {product.product.name}
+                            {product.quantity}
                             <div>
-                                <button onClick={() => onIncrement(product.barcode)}>+</button>
-                                <button onClick={() => onDecrement(product.barcode)}>-</button>
-                                <button onClick={() => onRemove(product.barcode)}>Remove</button>
+                                <button onClick={() => onIncrement(product.product.barcode)}>+</button>
+                                <button onClick={() => onDecrement(product.product.barcode)}>-</button>
+                                <button onClick={() => onRemove(product.product.barcode)}>Remove</button>
                             </div>
                         </li>
                     </div>
