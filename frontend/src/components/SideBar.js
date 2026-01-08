@@ -20,8 +20,12 @@ export default function SideBar({items, onIncrement, onDecrement, onRemove}) {
                 {items.map((product, quantity) => (
                     <div>
                         <li key={product.barcode} className="sidebar-list-item">
-                            {product.product.name}
-                            {product.quantity}
+                            <div className="sidebar-info">
+                                <p>{product.product.name}</p>
+                                <p>{product.product.brand}</p>
+                                <p>🧺 {product.quantity}</p>
+                            </div>
+                            
                             <div>
                                 <button onClick={() => onIncrement(product.product.barcode)}>+</button>
                                 <button onClick={() => onDecrement(product.product.barcode)}>-</button>
