@@ -77,7 +77,6 @@ export default function GroceryOptimizer({ onAdd }) {
 
     function addToList(product) {
         setGroceryList(prev => {
-            console.log(product.barcode);
             const existing = prev.find(item => item.product.barcode === product.barcode);
 
             if (existing) {

@@ -6,9 +6,6 @@ import "./styles/SideBar.css";
 export default function SideBar({items, onIncrement, onDecrement, onRemove}) {
 
     console.log(items);
-    items.map((product, quantity) => {
-        console.log(product.product);
-    });
 
     return (
         <div className="sidebar">
@@ -21,6 +18,7 @@ export default function SideBar({items, onIncrement, onDecrement, onRemove}) {
                     <div>
                         <li key={product.barcode} className="sidebar-list-item">
                             <div className="sidebar-info">
+                                <img src={product.product.image}></img>
                                 <p>{product.product.name}</p>
                                 <p>{product.product.brand}</p>
                                 <p>🧺 {product.quantity}</p>
