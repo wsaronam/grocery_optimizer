@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const productsRoute = require("./routes/products.js");
+const optimizeRoute = require("./routes/optimize.js");
 
 
 const app = express();
@@ -17,6 +18,9 @@ app.get("/", (req, res) => {
 
 // api call to get product data
 app.use("/api/products", productsRoute);
+
+// api call to estimate simulated price
+app.use("/api/optimize", optimizeRoute);
 
 
 // Starts server

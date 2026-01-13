@@ -75,6 +75,16 @@ export default function GroceryOptimizer({ onAdd }) {
         }
     }
 
+    async function handleOptimize() {
+        const res = await fetch("/api/optimize", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+        })
+
+        const data = await res.json();
+    }
+
+
     function addToList(product) {
         setGroceryList(prev => {
             const existing = prev.find(item => item.product.barcode === product.barcode);
@@ -105,6 +115,9 @@ export default function GroceryOptimizer({ onAdd }) {
                         placeholder="Search for grocery items..."
                     />
                     <button className="search-button" onClick={handleSearch}>Search</button>
+                    <button onClick={handleOptimize}>
+                        Test Optimize
+                    </button>
                 </div>
                 <div>
                     {loading && <p>Loading...</p>}
