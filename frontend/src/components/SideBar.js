@@ -4,9 +4,6 @@ import "./styles/SideBar.css";
 
 
 export default function SideBar({items, onIncrement, onDecrement, onRemove}) {
-
-    console.log(items);
-
     return (
         <div className="sidebar">
             <h1 className="sidebar-title">Your Grocery List</h1>

@@ -79,10 +79,12 @@ export default function GroceryOptimizer({ onAdd }) {
         const res = await fetch("/api/optimize", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(groceryList),
         })
 
         const data = await res.json();
-    }
+        console.log(data);
+    }   
 
 
     function addToList(product) {
