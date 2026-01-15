@@ -12,6 +12,7 @@ export default function GroceryOptimizer({ onAdd }) {
     const [groceryList, setGroceryList] = useState([]);
     const [query, setQuery] = useState("");
     const [results, setResults] = useState([]);
+    const [optimizationResult, setOptimizationResult] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -83,7 +84,7 @@ export default function GroceryOptimizer({ onAdd }) {
         })
 
         const data = await res.json();
-        console.log(data);
+        setOptimizationResult(data);
     }   
 
 
@@ -120,6 +121,23 @@ export default function GroceryOptimizer({ onAdd }) {
                     <button onClick={handleOptimize}>
                         Test Optimize
                     </button>
+                    {optimizationResult && (
+                        <div>
+                            <p>Cheapest Store: {optimizationResult.cheapestStore}</p>
+                            {Object.entries(optimizationResult.stores).map(([store, data]) => (
+                                <div key={store}>
+                                    <p>{store} - ${data.total}</p>
+                                    <ul>
+                                        {data.breakdown.map(item => (
+                                            <li key={item.name}>
+                                                {item.name} x{item.quantity} - ${item.price}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
                 <div>
                     {loading && <p>Loading...</p>}

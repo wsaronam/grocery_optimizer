@@ -13,7 +13,6 @@ async function searchProducts(query) {
     };
 
     const res = await axios.get(url, {params});
-    console.log(res.data.products);
 
     return res.data.products.map(p => ({
         id: p.id,
