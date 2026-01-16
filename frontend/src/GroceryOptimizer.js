@@ -17,6 +17,7 @@ export default function GroceryOptimizer({ onAdd }) {
     const [error, setError] = useState(null);
 
 
+
     function incrementItem(barcode) {
         setGroceryList(prev =>
             prev.map(item =>
@@ -118,26 +119,6 @@ export default function GroceryOptimizer({ onAdd }) {
                         placeholder="Search for grocery items..."
                     />
                     <button className="search-button" onClick={handleSearch}>Search</button>
-                    <button onClick={handleOptimize}>
-                        Test Optimize
-                    </button>
-                    {optimizationResult && (
-                        <div>
-                            <p>Cheapest Store: {optimizationResult.cheapestStore}</p>
-                            {Object.entries(optimizationResult.stores).map(([store, data]) => (
-                                <div key={store}>
-                                    <p>{store} - ${data.total}</p>
-                                    <ul>
-                                        {data.breakdown.map(item => (
-                                            <li key={item.name}>
-                                                {item.name} x{item.quantity} - ${item.price}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
-                        </div>
-                    )}
                 </div>
                 <div>
                     {loading && <p>Loading...</p>}
@@ -152,6 +133,8 @@ export default function GroceryOptimizer({ onAdd }) {
             <div>
                 <SideBar 
                     items={groceryList}
+                    onOptimize={handleOptimize}
+                    optimizationResult={optimizationResult}
                     onIncrement={incrementItem}
                     onDecrement={decrementItem}
                     onRemove={removeItem} 

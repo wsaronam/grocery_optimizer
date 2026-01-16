@@ -1,14 +1,23 @@
+import { useState, useEffect } from "react";
+import OptimizationResult from "./OptimizationResult.js";
+
 import "./styles/SideBar.css";
 
 
 
 
-export default function SideBar({items, onIncrement, onDecrement, onRemove}) {
+export default function SideBar({items, onOptimize, optimizationResult, onIncrement, onDecrement, onRemove}) {
     console.log(items);
 
     return (
         <div className="sidebar">
             <h1 className="sidebar-title">Your Grocery List</h1>
+
+            <button onClick={onOptimize}>
+                Test Optimize
+            </button>
+
+            <OptimizationResult result={optimizationResult} />
 
             {items.length === 0 && (<p className="empty-message">Grocery list is empty.</p>)}
 
