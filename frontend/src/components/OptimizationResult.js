@@ -1,3 +1,6 @@
+import "./styles/OptimizationResult.css";
+
+
 
 
 function OptimizationResult({result}) {
@@ -7,19 +10,18 @@ function OptimizationResult({result}) {
 
 
     return (
-        <div>
+        <div className="optimization-card">
             <h3>Best Store</h3>
-            <div>
-                <span>{cheapestStore.toUpperCase()}</span>
-                <span>${stores[cheapestStore].total.toFixed(2)}</span>
+            <div className="best-store">
+                <span className="store-name">{cheapestStore.toUpperCase()}</span>
+                <span className="store-price">${stores[cheapestStore].total.toFixed(2)}</span>
             </div>
 
             <h4>Store Comparisons</h4>
-            <ul>
+            <ul className="store-list">
                 {Object.entries(stores).map(([store, data]) => (
-                    // <li key={store}>
-                    <li>
-                        {/* <span>{store}</span> */}
+                    <li key={store} className={store === cheapestStore ? "store-item best" : "store-item"}>
+                        <span>{store}</span>
                         <span>${data.total.toFixed(2)}</span>
                     </li>
                 ))}

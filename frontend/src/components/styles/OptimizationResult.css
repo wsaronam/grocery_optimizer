@@ -1,0 +1,50 @@
+.optimization-card {
+    background: #4a0061;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+
+.optimization-card h3 {
+    margin-bottom: 12px;
+}
+
+.best-store {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #cd28ff;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 16px;
+}
+
+.store-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.store-price {
+    font-weight: bold;
+    color: #fffc4b;
+}
+
+.store-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.store-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 4px;
+    border-bottom: 1px solid #eee;
+}
+
+.store-item.best {
+    font-weight: bold;
+    color: #fffc4b;
+}
