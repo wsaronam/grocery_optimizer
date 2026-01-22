@@ -9,7 +9,10 @@ import "./GroceryOptimizer.css";
 
 export default function GroceryOptimizer({ onAdd }) {
 
-    const [groceryList, setGroceryList] = useState([]);
+    const [groceryList, setGroceryList] = useState(() => {
+        const saved = localStorage.getItem("groceryList");
+        return saved ? JSON.parse(saved) : [];
+    });
     const [query, setQuery] = useState("");
     const [results, setResults] = useState([]);
     const [optimizationResult, setOptimizationResult] = useState(null);
