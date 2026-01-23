@@ -7,14 +7,14 @@ import "./styles/SideBar.css";
 
 
 export default function SideBar({items, onOptimize, optimizationResult, onIncrement, onDecrement, onRemove}) {
-    console.log(items);
+    // console.log(items);
 
     return (
         <div className="sidebar">
             <h1 className="sidebar-title">Your Grocery List</h1>
 
             <button onClick={onOptimize}>
-                Test Optimize
+                Find Store Prices
             </button>
 
             <OptimizationResult result={optimizationResult} />

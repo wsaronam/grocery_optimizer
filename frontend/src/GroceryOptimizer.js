@@ -20,6 +20,17 @@ export default function GroceryOptimizer({ onAdd }) {
     const [error, setError] = useState(null);
 
 
+    useEffect(() => {
+        const savedList = localStorage.getItem("groceryList");
+        if (savedList) {
+            setGroceryList(JSON.parse(savedList));
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("groceryList", JSON.stringify(groceryList));
+    }, [groceryList]);
+    
 
     function incrementItem(barcode) {
         setGroceryList(prev =>
@@ -48,18 +59,22 @@ export default function GroceryOptimizer({ onAdd }) {
         );
     }
 
+    function addToList(product) {
+        setGroceryList(prev => {
+            const existing = prev.find(item => item.product.barcode === product.barcode);
 
-    useEffect(() => {
-        const savedList = localStorage.getItem("groceryList");
-        if (savedList) {
-            setGroceryList(JSON.parse(savedList));
-        }
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem("groceryList", JSON.stringify(groceryList));
-    }, [groceryList]);
-
+            if (existing) {
+                return prev.map(item =>
+                    item.product.barcode === product.barcode
+                    ? {...item, quantity: item.quantity + 1}
+                    : item
+                );
+            }
+            else {
+                return [...prev, {product, quantity: 1}];
+            }
+        });
+    }
 
     async function handleSearch() {
         if (!query) return;
@@ -90,24 +105,8 @@ export default function GroceryOptimizer({ onAdd }) {
         const data = await res.json();
         setOptimizationResult(data);
     }   
-
-
-    function addToList(product) {
-        setGroceryList(prev => {
-            const existing = prev.find(item => item.product.barcode === product.barcode);
-
-            if (existing) {
-                return prev.map(item =>
-                    item.product.barcode === product.barcode
-                    ? {...item, quantity: item.quantity + 1}
-                    : item
-                );
-            }
-            else {
-                return [...prev, {product, quantity: 1}];
-            }
-        });
-    }
+    
+    
 
 
     return (

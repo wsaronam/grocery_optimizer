@@ -12,9 +12,9 @@ app.use(express.json());
 
 
 // test
-app.get("/", (req, res) => {
-    res.json({ message: "Backend running!" });
-});
+// app.get("/", (req, res) => {
+//     res.json({ message: "Backend running!" });
+// });
 
 // api call to get product data
 app.use("/api/products", productsRoute);
